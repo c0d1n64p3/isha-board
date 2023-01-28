@@ -14,9 +14,9 @@ implemented:
 - None
 
 planned:
-- CalDav-Calendar multiple user
-- weather information
+- CalDav-Calendar for multiple user
+- weather information from open weather
 - diashow (NAS)
-- recipes or newsticker
+- recipes, newsticker or other
 - phillips api
 - homatic-ip api

@@ -1,6 +1,5 @@
-import random
-# add stuff
 
-a = random.randint(0,100)
 
-print(a)
+
+if __name__ == "__main__":
+    pass

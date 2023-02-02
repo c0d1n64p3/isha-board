@@ -1,0 +1,5 @@
+# ignore some test files
+foo1.py
+foo2.py
+# ignore notes
+note.txt

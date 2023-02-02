@@ -20,3 +20,7 @@ planned:
 - recipes, newsticker or other
 - phillips api
 - homatic-ip api
+
+
+sources:
+- weather icons [OpenWeather](https://openweathermap.org/weather-conditions)

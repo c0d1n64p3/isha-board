@@ -23,4 +23,7 @@ planned:
 
 
 sources:
-- weather icons [OpenWeather](https://openweathermap.org/weather-conditions)
+- weather icons designer : [iconixar](https://www.flaticon.com/authors/iconixar)
+
+
+

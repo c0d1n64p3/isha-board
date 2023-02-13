@@ -6,67 +6,12 @@ import requests
 import json
 from PyQt6.QtCore import QRect, QSize, QTimer, Qt
 from PyQt6.QtGui import QAction, QIcon, QPixmap, QFont
-from PyQt6.QtWidgets import QApplication, QMainWindow, QStatusBar, QDialog, QLabel, QPushButton, QWidget
+from PyQt6.QtWidgets import QApplication, QMainWindow, QDialog, QLabel, QPushButton, QWidget
 
 from PIL import Image
 from PIL.ImageQt import ImageQt
 
 FONT = "Arial"
-
-    
-class StatusBar(QStatusBar):
-    def __init__(self, master):
-        super().__init__(master)
-        self.statusbar = master.menuBar()
-        
-        # elements in toolbar 
-        self.menu = self.statusbar.addMenu(QIcon("gui/icons/menu.png"), " ")
-        
-        # elements in menu
-        self.update_button = QAction(QIcon("gui/icons/update.png"), "Aktualisieren", master)
-        self.update_button.triggered.connect(lambda: self.update(master))
-        self.menu.addAction(self.update_button)
-
-        self.user_menu = self.menu.addMenu("User")
-        
-        self.setting_menu = self.menu.addMenu(QIcon("gui/icons/settings.png"), "Einstellungen")
-        
-        self.close_button = QAction(QIcon("None"), "Beenden", master)
-        self.close_button.triggered.connect(lambda: self.dialog_func(master))
-        self.menu.addAction(self.close_button)
-
-        # elements in user
-        self.user_1_button = QAction(QIcon("bug.png"), "User 1", self)
-        self.user_1_button.triggered.connect(self.user_1_func)
-        self.user_1_button.setCheckable(True)
-        self.user_menu.addAction(self.user_1_button)
-        
-        self.user_2_button = QAction(QIcon("bug.png"), "User 2", self)
-        self.user_2_button.triggered.connect(self.user_2_func)
-        self.user_2_button.setCheckable(True)
-        self.user_menu.addAction(self.user_2_button)
-        
-        # elements in setting
-        self.setting_1_button = QAction(QIcon("bug.png"), "Setting 1", self)
-        self.setting_1_button.triggered.connect(self.setting_1_func)
-        self.setting_1_button.setCheckable(True)
-        self.setting_menu.addAction(self.setting_1_button)
-    
-    def update(self, parent):
-        parent.update()
-        
-    def user_1_func(self):
-        print("user 1")
-        
-    def user_2_func(self):
-        print("user 2")
-        
-    def setting_1_func(self):
-        print("setting 1")
-        
-    def dialog_func(self, master):
-        dialog = CloseDialog(master)
-        dialog.exec()
 
 # dialogs
 
@@ -102,6 +47,7 @@ class CloseDialog(QDialog):
         print("herunterfahren")    
 
 # widgets
+
 class DiaWidget(QWidget):
     def __init__(self, master):
         super().__init__(master)
@@ -113,9 +59,6 @@ class DiaWidget(QWidget):
         self.datetime_widget = DateTimeWidget(self)
         
         self.weather_widget = WeatherWidget(self)
-                
-
-    
 
 class WeatherWidget(QWidget):
     def __init__(self, parent):
@@ -219,7 +162,6 @@ class WeatherWidget(QWidget):
         curr_icon = QPixmap(icon_path)
         self.curr_icon.setPixmap(curr_icon)
         self.curr_icon.setScaledContents(True)
-        
 
 class DateTimeWidget(QWidget):
     def __init__(self, parent):
@@ -280,7 +222,7 @@ class DiaLabel(QLabel):
 
         self.timer = QTimer()
         self.timer.timeout.connect(self.update)
-        self.timer.start(10000)
+        self.timer.start(300000)
 
         self.update()
 
@@ -335,12 +277,9 @@ if __name__ == "__main__":
             super().__init__()
 
             self.setFixedSize(900,1650)
-            
-            #statusbar = StatusBar(self)
 
             dia = DiaWidget(self)
-            
-        
+
         def update(self):
             print("update 1")
 
